@@ -28,4 +28,14 @@ notes.post('/', (req, res) => {
     res.json('failure');
   }
 });
+
+notes.delete('/:id', (req, res) => {
+  readFromFile('./db/db.json').then((data) => {
+    const saveNote = JSON.parse(data)
+    const selectedNote = saveNote.filter(note => note.id !== req.params.id)
+    writeToFile('./db/db.json', selectedNote)
+    res.json("Sayonara memo")
+  })
+});
+
 module.exports = notes;
