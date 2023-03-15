@@ -28,3 +28,4 @@ notes.post('/', (req, res) => {
     res.json('failure');
   }
 });
+module.exports = notes;
